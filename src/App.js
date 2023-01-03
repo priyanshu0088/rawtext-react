@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Navbar from './Components/Navbar.js';
+import TextForm from './Components/TextForm';
+import Alert from './Components/Alert';
+import { useState } from 'react';
+// // import About from './Compone
+//   BrowserRouter as Router,
+//   Routes,
+//   Rnts/About';
+// // import {oute
+// } from "react-router-dom";
 
 function App() {
+  const [alert,setAlert] = useState(null);
+
+  const showAlert = (message,type)=>{
+    setAlert({
+      msgg:  message,
+      type: type
+    })
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+<>
+
+ <Navbar  title=  " Rawtext"/>
+<Alert alert={alert}/>
+<TextForm showAlert={showAlert} heading="Enter your text here" />
+
+</>
+ );
 }
 
 export default App;
